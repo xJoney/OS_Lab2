@@ -39,7 +39,7 @@ void change_directory(char *path) {
 }
 
 void clr(){
-	system("clear");
+	system("clear"); //clears the console
 }
 
 void directory(){
@@ -62,21 +62,23 @@ void directory(){
 
 void echo(){
 
-	//printf("%s",s);
 }
 
 void environ(){
-    //place code here
+    
 }
 
 void help(){
-    //place code here
+    
 }
 
 void pauseop(){
-    //place code here
+    printf("\npaused.. press Enter to resume");
+    getchar(); //get character from user input
+    printf("\nresuming..\n");
 }
 
 void quit(){
-    //place code here
+    printf("Exiting myshell...\n"); //prints out to let user knows they are exiting the shell
+     exit(0); //exits shell
 }
