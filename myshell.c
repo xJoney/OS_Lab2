@@ -43,14 +43,36 @@ void execute_command(char *input) {
             quit();//calls quit function
         }  
         else {
-            printf("Command not recognized.\n"); //if user input invalid command, let user know
+            pid_t pid = fork();
+
+            if(pid>0){ //parent process
+                
+                int status;
+                waitpid(pid,&status,0); //wait for all child processes to finish
+            }
+            else{ //child process
+                char penv[1024];
+                snprintf(penv,sizeof(penv),"Parent:%s/myshell",getenv("PWD")); //sets up parent variables
+                setenv("parent",penv,1);
+            }
         }
     }
 }
 
-int main() {
+int main(int argc,char *argv[]) {
     char input[1024]; // Buffer for user input
+    // FILE *file; 
 
+    // if(argc!=2){                                 //checks for error
+    //     fprintf(stderr, "Usage: %s\n",argv[0]);
+    //     return 1;
+    // }
+    // file = fopen(argv[1],"r"); //opens file and reads it
+
+    // while(fgets(input,sizeof(input),file)!=NULL){ //while not null, execute command 
+    //     execute_command(input);
+    // }
+    // fclose(file); //closes the file
     // Main command loop
     while (1) {
         printf("MyShell> "); // Prompt for input
