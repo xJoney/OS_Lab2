@@ -42,40 +42,49 @@ void clr(){
 	system("clear"); //clears the console
 }
 
-void directory(){
-	struct dirent *de;  // Pointer for directory entry 
-  
-    // opendir() returns a pointer of DIR type.  
-   	 DIR *dr = opendir("."); 
-  
-    	if (dr == NULL)  // opendir returns NULL if couldn't open directory 
+void directory(char *path){
+	struct dirent *dir_ent;  // Pointer for directory entry that hold information on each directory entry
+    DIR *dir_stream = opendir(path); //opens current directory, returns a pointer which represents the directory stream
+
+    if (dir_stream == NULL) 
    	 { 
-      	    printf("Could not open current directory" ); 
+      	    printf("Could not find directory: %s... Perhaps file does not exist.\n",path);  //if the pointer is null, let user know that the directory could not be opened
+            return;
     	  
    	 } 
+    while ((dir_ent = readdir(dir_stream)) != NULL) //pointer for directory entry is assigned to read the next directory. AS long as it is not NULL, continue
+            printf("%s\n", dir_ent->d_name); //outputs the directory
   
-    while ((de = readdir(dr)) != NULL) 
-            printf("%s\n", de->d_name); 
-  
-    closedir(dr);     
+    closedir(dir_stream);     //closes the directory stream
 }
 
-void echo(){
-
+void echo(char *msg){
+    printf("%s\n",msg); // prints the comment to console
 }
 
-void environ(){
-    
+void environment(){
+    extern char** environ; //sets environ as an external variable
+    for(int i=0;environ[i]!=NULL; i++){ //iterate through array of environment variables until there's none left
+        printf("%s\n",environ[i]); //prints environment to console
+    }
 }
 
 void help(){
-    
+    int c; // initialized variables
+    FILE *f = fopen("readme.md","r"); //opens "readme.md" file and read
+    if(f==NULL){        
+        printf("error");    //checks if file is NULL, prints error if it is
+    }
+    while((c=fgetc(f))!=EOF){ //gets next character in the file while its not at the end of file
+        putchar(c);         //outputs character to console
+    }
+    fclose(f); //closes file
 }
 
 void pauseop(){
-    printf("\npaused.. press Enter to resume");
+    printf("\npaused.. press Enter to resume"); //lets users know that the shell has been paused
     getchar(); //get character from user input
-    printf("\nresuming..\n");
+    printf("\nresuming..\n"); //lets user know the shell will continue now
 }
 
 void quit(){
