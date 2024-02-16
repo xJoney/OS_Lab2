@@ -7,20 +7,23 @@ Daniel Amasowamwan <br/>
 Hanum Magaji <br/>
 # Shell Commands
 ## cd
-Prints current directory if no directory parameter is inputted.
+**`cd`** Prints current directory if no directory parameter is inputted. <br/>
+**`cd <path>`** move to specified path <br/>
+**`cd ..`** move to parent directory <br/>
 If user inputs a specific path, it will change directory to that path.
 ## clr
-clears the screen.
+**`clr`** clears the screen.
 ## dir 
-Lists the contents of the directory.
+**`dir`** Lists the contents of the directory.<br/>
+**`dir <path>`** list the contents of the specified directory<br/>
 ## environ
-Lists all the environment strings.
+**`environ`** Lists all the environment strings.
 ## echo 
-This will display the comment user typed.
+*`echo <comment>`* This will display the comment user typed.
 ## help
-Display the user manual.
+**`help`** Display the user manual.
 ## pause 
-Pauses the operation of the shell until
+**`pause`** Pauses the operation of the shell until
 **`Enter`** is pressed.
 ## quit 
-Exits the Shell.
+**`quit`** or **`exit`** is used to exit the Shell.
