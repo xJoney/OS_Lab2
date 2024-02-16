@@ -16,35 +16,34 @@ void execute_command(char *input) {
             change_directory(token); // Call the change_directory function
         } 
         else if (strcmp(token, "clr") == 0) {
-            token = strtok(NULL, delim); // Get the next part of the input (directory path)
+            
             clr(); // Call the change_directory function
         } 
         else if (strcmp(token,"dir")==0){
-            token = strtok(NULL, delim);
-            directory();
+        token = strtok(NULL, delim); //get the next part of the input (directorypath)
+        if (token == NULL){
+            	token = ("."); //If user did not put in a path, put the token as "." to pwd
+        }
+            directory(token);//call directory function 
         }
         else if (strcmp(token,"echo")==0){
-            token = strtok(NULL, delim);
-            echo();
+            token = strtok(NULL, delim); //get the next part of the input (comment)
+            echo(token); //calls echo function
         }
         else if (strcmp(token,"environ")==0){
-            token = strtok(NULL, delim);
-            environ();
+            environment(); //calls environment function
         }
        else if (strcmp(token,"help")==0){
-            token = strtok(NULL, delim);
-            help();
+            help(); //calls help function
         }
        else if (strcmp(token,"pause")==0){
-            token = strtok(NULL, delim);
-            pauseop();
-        }
-       else if (strcmp(token,"quit")==0){
-            token = strtok(NULL, delim);
-            quit();
+            pauseop(); //calls pauseop function 
+        } 
+       else if (strcmp(token,"quit")==0 || strcmp(token,"exit")==0){ //accepts exit or quit to run quit function
+            quit();//calls quit function
         }  
         else {
-            printf("Command not recognized.\n");
+            printf("Command not recognized.\n"); //if user input invalid command, let user know
         }
     }
 }
