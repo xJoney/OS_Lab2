@@ -2,7 +2,7 @@
 This is a demonstration of Lab 2 - A simple shell where we have created a shell that has multiple features.
 # Group 10 
 Jonathan Hua 100754458 <br/>
-Prince Luckyworluh <br/>
+Prince Luckyworluh 100791723 <br/>
 Daniel Amasowamwan <br/>
 Hanum Magaji <br/>
 # Shell Commands
