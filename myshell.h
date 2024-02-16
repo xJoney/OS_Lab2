@@ -14,7 +14,7 @@ void change_directory(char *path);
 void clr();
 void directory();
 void echo();
-void environ();
+void environment();
 void help();
 void pauseop();
 void quit();
